@@ -14,8 +14,8 @@ class Api {
         return res.json();
     }
 
-    getUserInfo() {
-        return fetch(`${this.baseUrl}`, {
+    getUserInfo(name) {
+        return fetch(`${this.baseUrl}/${name}`, {
             headers: this.headers
         })
             .then(this._getResponseData)
