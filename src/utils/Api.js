@@ -1,5 +1,6 @@
 import { apiOptions } from "./options.js";
 
+
 class Api {
     constructor(options) {
         this.baseUrl = options.baseUrl;

@@ -6,36 +6,28 @@ import Search from "../Search/Search";
 
 function App() {
   const [user, setUser] = React.useState([]);
-  const [searchText, setSearchText] = React.useState([]);
+  const [searchText, setSearchText] = React.useState('');
 
-
-
-  function handleSearchText() {
+  function getUser() {
     api
       .getUserInfo(searchText)
-      .then(item => {
-        setSearchText(item)
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }
-
-  React.useEffect(() => {
-    api
-      .getUserInfo()
       .then(item => {
         setUser(item);
       })
       .catch(err => {
         console.log(err);
       })
-  }, []);
+  };
+
+  function handleSearchText(searchText) {
+
+    getUser()
+  }
 
   return (
     <>
       <Search
-        searchText={searchText}
+        searchText={setSearchText}
         handleSearch={handleSearchText} />
       <Profile
         user={user}
